@@ -57,7 +57,7 @@
     NSString *  resName = [resDict objectForKey:@"ttf"];
     NSString *	extension = [resName pathExtension];
     NSString *	fullName = [resName substringToIndex:(resName.length - extension.length - 1)];
-    [self registerIconFontWithURL: [[NSBundle mainBundle] URLForResource:fullName withExtension:extension]];
+    [self registerIconFontWithURL: [[NSBundle bundleForClass:[self class]] URLForResource:fullName withExtension:extension]];
 }
 
 +(NSString *)icon:(NSString *)iconName fromFont:(NSString *)fontName{
@@ -76,7 +76,7 @@
     NSString *	extension = [resName pathExtension];
     NSString *	fullName = [resName substringToIndex:(resName.length - extension.length - 1)];
     
-    NSString * path = [[NSBundle mainBundle] pathForResource:fullName ofType:extension];
+    NSString * path = [[NSBundle bundleForClass:[self class]] pathForResource:fullName ofType:extension];
     NSData *data = [NSData dataWithContentsOfFile:path];
     
     NSError * error = nil;
